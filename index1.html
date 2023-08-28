@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Sky光遇</title>
+	<link rel="icon" type="image" href="favicon.ico">
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+<script type="text/javascript">
+function smartColumns() { 
+//Reset column size to a 100% once view port has been adjusted
+$("ul.column").css({ 'width' : "100%"});
+
+var colWrap = $("ul.column").width(); //Get the width of row
+var colNum = Math.floor(colWrap / 200); //Find how many columns of 200px can fit per row / then round it down to a whole number
+var colFixed = Math.floor(colWrap / colNum); //Get the width of the row and divide it by the number of columns it can fit / then round it down to a whole number. This value will be the exact width of the re-adjusted column
+
+$("ul.column").css({ 'width' : colWrap}); //Set exact width of row in pixels instead of using % - Prevents cross-browser bugs that appear in certain view port resolutions.
+$("ul.column li").css({ 'width' : colFixed}); //Set exact width of the re-adjusted column	
+
+}	
+
+smartColumns();
+
+$(window).resize(function () { //Each time the viewport is adjusted/resized, execute the function
+smartColumns();
+});
+</script> 
+	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<style>
+ /* 。 */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 楷体;
+	}
+
+/* render html5 elements as block */
+header, footer, section, aside, nav, article {
+	display: block;
+	}
+
+/* standard body */
+body {
+	margin: 0 auto;
+	width: 960px;
+	font: 14px/20px "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	/* background: #271408 url("bodybkg.gif") repeat; */
+	background: url("背景.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	}
+	
+/* standard alignments */
+.alignleft {
+	float: left;
+	}
+
+img.alignleft {
+	margin: 5px 10px 0 0; 
+	}
+
+.alignright {
+	float: right;
+	}
+
+img.alignright {
+	margin: 5px 0 0 10px; 
+	}
+	
+.center {
+	text-align: center;
+	}
+	
+.fleft {
+	text-align: left;
+	float: left;
+	margin-left: 20px;
+	}
+	
+.fright {
+	float: right;
+	text-align: right;
+	margin-right: 20px;
+	}
+	
+.fcentered {
+	text-align: center;
+	}
+
+/* Hx tags */
+
+h1 {
+	font-size: 48px;
+	padding: 20px 0;
+	text-shadow: 2px 2px 2px #000;
+	color: #d6a965;
+	}
+
+h2 {
+	font-size: 24px;
+	padding: 20px 0;
+	}
+
+h3 {
+	font-size: 18px;
+	padding: 10px 0;
+	}
+
+p {
+	padding-bottom: 20px;
+	}
+
+/* nav */
+
+nav {
+	position: absolute;
+	width: 960px;
+	background: url("navbg.png");
+	
+	/* curved border radius */
+	/* 设置元素的弯曲边框半径 */
+    border-radius: 10px;
+	}
+
+nav ul {
+	margin: 0 auto;
+	width: 960px;
+	list-style: none;
+	}
+
+nav ul li {
+	float: left;
+	}
+		
+nav ul li a {
+	display: block;
+	margin-right: 20px;
+	width: 140px;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 44px;
+	text-align: center;
+	text-decoration: none;
+	color: #f2ede7;
+	}
+			
+nav ul li a:hover {
+	color: #d6a965;
+	}
+			
+nav ul li.selected a {
+	color: #d6a965;
+	}
+			
+nav ul li.subscribe a {
+	margin-left: 20px;
+	padding-left: 33px;
+	text-align: left;
+	background: url("rss.png") left center no-repeat;
+	}
+
+
+
+/* intro */
+
+#intro {
+	position: relative;
+	margin-top: 55px;
+	padding: 50px;
+	background: #eabb4d;
+	border: #f2ede7 solid 15px;
+	/* background size */
+	background-size: 100%;
+	
+	
+	/* curved border radius */
+	border-radius: 10px;
+	border-radius: 10px;
+	}
+	
+#intro h2, #intro p {
+	position: relative;
+	z-index: 9999;
+	width: 350px;
+	}
+	
+#intro h2 {
+	padding: 0 0 20px 0;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	}
+	
+#intro p {
+	padding: 0;
+	color: #fff;
+	text-align: justify;
+	}
+	
+#intro img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 400px;
+	height: 100%;
+	
+	/* curved border radius */
+	border-radius: 10px;
+	border-radius: 10px;
+	}
+
+/* content and sidebar layout */
+
+#content {
+	position: relative;
+	margin-top: 50px;
+	float: left; 
+	width: 920px; 
+	margin:10px 5px 10px 0; 
+	padding:5px 20px 5px 20px;
+	background-color: #fff;
+	
+/* curved border radius */
+	border-radius: 10px;
+}
+
+/* columns */
+
+#content ul.column {
+	width: 100%;
+	padding: 0;
+	margin: 10px 0;
+	list-style: none;
+}
+
+#content ul.column li {
+	float: left;
+	width: 230px; /*Set default width*/
+	padding: 0;
+	margin: 5px 0;
+	display: inline;
+}
+
+#content .block {
+	height: 355px;
+	font-size: 1em;
+	margin-right: 10px; /*Creates the 10px gap between each column*/
+	padding: 20px;
+	background: #eabb4d;
+/* curved border radius */
+	border-radius: 10px;
+
+}
+
+#content .block a {
+	color: #FFF;
+	text-decoration: none;
+	}
+	
+#content .block img {
+  /*Flexible image size with border*/
+	width: 89%;  /*Took 1% off of the width to prevent IE6 bug*/
+	padding: 5%;
+	background:#fff;
+	margin: 0 auto;
+	display: block;
+	-ms-interpolation-mode: bicubic; /*prevents image pixelation IE 6/7 */
+	}
+/* end of column configuration */
+	
+/* footer */
+footer {
+	width: 960px;
+	clear: both;
+	color: #f2ede7;
+	overflow: hidden;
+	padding-top: 10px;
+	background-color: #271408;
+	/* curved border radius */
+	border-radius: 10px;
+	height: 220px;
+	margin-bottom: 10px;
+	}
+	
+footer section {
+width: 300px;
+float: left;
+padding: 0 10px;
+}
+
+footer section h2 {
+margin-top: 0;
+}
+
+footer section p {
+  font-size: 12px;
+	}
+
+footer section a {
+	color: #999;
+	}
+	
+footer section a:hover {
+	color: #FFF;
+	text-decoration: none;
+	}
+	
+/* for inner pages */
+
+/* content and sidebar layout */
+
+#innercontent {
+	float: left; 
+	width: 610px; 
+	margin:10px 5px 10px 0; 
+	padding:5px 20px 5px 20px;
+	background-color: #d6a965;
+	
+/* curved border radius */
+	/* 设置元素的弯曲边框半径 */
+    border-radius: 10px;
+}
+
+aside {
+	float: right;
+	text-align: left; 
+	width: 300px; 
+	margin:0; 
+	padding:0;
+	}
+
+/* article */
+.articlecontent header p, .blogPost header p a {
+	font-size: 14px;
+	font-style: italic;
+	color: #777;
+	}
+
+.articlecontent p a {
+	color: #695e53;
+	
+	}
+	
+.articlecontent p a:hover {
+	color: #fff;
+	}
+	
+.articlecontent header p a:hover {
+	text-decoration: none;
+	color: #000;
+	}
+	
+/* box shadow on pics */
+.articlecontent img {
+	box-shadow: 3px 3px 7px #777;
+	}
+
+/* sidebar */
+aside section {
+	margin: 10px 0 0 10px;
+	padding: 10px 15px;
+	background-color: #d6a965;
+/* curved border radius */
+	/* 设置元素的弯曲边框半径 */
+    border-radius: 10px;
+
+	}
+
+aside section ul {
+	margin: 0 0 0 20px;
+	color: #FFF;
+	}
+	
+aside section ul li a {
+	display: block;
+	text-decoration: none;
+	color: #695e53;
+	}
+		
+aside section ul li a:hover {
+	text-decoration: underline;
+	color: #fff;
+	}
+	#dddd {
+		text-align: center;
+		color: orange;
+		/* fon */
+		margin: 10px 0;
+	}
+	.wuwuwu {
+		text-align: justify;
+		font-size: 15px;
+		line-height: 30px;
+	}
+	#bugs {
+		margin: 30px;
+		margin-top: 0;
+	}
+</style>
+<body>
+
+	<header>
+		<h1>Sky 光遇</h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="关于项目.html">About website</a></li>
+			<li><a href="文创购买.html">Related product</a></li>
+			<li><a href="index.html">Home page</a></li>
+			<li class="selected"><a href="index1.html">Beautiful scene</a></li>
+			<li><a href="攻略大全.html">Game Guide</a></li>
+			<li><a href="联系我们.html">Contact Us (built)</a></li>
+		</ul>
+	</nav>
+	<section id="intro">
+		<header>
+			<h2>光之国的神秘角落<br>Mysterious area of the Sky </h2>
+		</header> 
+		<p>徜徉在美丽的光景里，让我们一起敲击世界的大门，向光而行。Wandering in the beautiful scene, let us knock on the door of the world and walk towards the light.点击图片进入-Click the image to enter-</p>
+		<img src="放在右上角的.jpeg" alt="lime" />
+	</section>
+	
+	<section id="content">
+				<ul class="column">
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href="https://b23.tv/hpVa398"><img src="双面湖.png" alt=""  /></a> 
+										<h2><a href="https://b23.tv/hpVa398">双面湖<br>Lake of sky and earth</a></h2> 
+										<p>天空与大地在此交汇，倒映出你的影子<br>Where sky and earth meet, and your shadow is reflected
+										</p> 
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href="https://b23.tv/tOaFbYy"><img src="黑色号角.png" alt=""  /></a> 
+										<h2><a href=" https://b23.tv/tOaFbYy">黑色号角<br>Black horn</a></h2> 
+										<p>高大的雕像吹响胜利的号角。<br>The tall statue blew the trumpet of victory.</p> 
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href=" https://b23.tv/DDc6tK6"><img src="星际线.png" alt=""  /></a> 
+										<h2><a href=" https://b23.tv/DDc6tK6">星际线<br>Interstellar lines</a></h2> 
+										<p>星际线，是宇宙间那织就的一条幻彩徜徉，串起星流转间的诗意漫。<br>Starline, is the universe that weave a magic wander, string the poetic flow of stars.
+										</p> 
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href=" https://b23.tv/0tJi58l"><img src="青鸟桥.png" alt=""  /></a> 
+										<h2><a href=" https://b23.tv/0tJi58l">青鸟桥<br>Bluebird Bridge
+										</a></h2> 
+										<p>青鸟桥，如一条蜿蜒的翠带，高悬于碧波之上，高悬于碧波之上。<br>The Blue Bird Bridge, like a winding green belt, hangs high above the blue waves
+										</p> 
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href=" https://b23.tv/X8yGvka"><img src="水帘洞.png" alt=""  /></a> 
+										<h2><a href=" https://b23.tv/X8yGvka">水帘洞<br>Water Curtain Cave</a></h2> 
+										<p>透过树屋的洞穴，银白的瀑布犹如一幅若童话的画卷。<br>Through the cave of the tree house, the silver waterfall is like a picture of a fairy tale.
+
+										</p> 
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href="https://b23.tv/pNBILRJ"><img src="四角天窗.png" alt=""  /></a> 
+										<h2><a href=" https://b23.tv/pNBILRJ">四角天窗<br>Corner skylight</a></h2> 
+										<p>四角天窗，宛如星空之窗一窥星辰的温柔。<br>The four corners of the skylight, like the window of the stars to glimpse the tenderness of the stars.
+										</p> 
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href=" https://b23.tv/Ilv1To6"><img src="金色日落桥.png" alt=""  /></a> 
+										<h2><a href=" https://b23.tv/Ilv1To6">金色日落桥<br>Golden Sunset Bridge</a></h2> 
+										<p>金色日落桥，通向黄昏幻境，在余晖中铺陈着一条黄金之路。<br>The golden Sunset Bridge, leading to the twilight fantasy, lays out a golden road in the afterglow.</p> 
+				        </section>
+				    </li>
+					<li>
+				        <section class="block">
+									<a href=" https://b23.tv/Q29jKa9"><img src="蓝色殿堂.png" alt=""  /></a> 
+										<h2><a href=" https://b23.tv/Q29jKa9">蓝色殿堂<br>Blue palace</a></h2> 
+										<p>梦境中的宫殿，蔚蓝的墙壁衬托着光影，呈现出宁静与神秘的旋律。<br>In the dream palace, the blue walls set off the light and shadow, presenting a quiet and mysterious melody.</p> 
+				        </section>
+				    </li>
+				</ul>
+		</section>
+		
+	
+		<footer id="ddddd">
+			<!-- <section> -->
+				<div id="bugs">
+			<h3 id="dddd">本网站由柴制作</h3>
+			<h4 id="dddd">This website is made by Chai</h4>
+			<p class="wuwuwu">本网站制作者目前就读于新西兰奥克兰Baradene college school，欢迎您访问了解我们的学校<br>The creator of this website is currently studying at Baradene college school in Auckland, New Zealand. You are welcome to visit and learn more about our school<br>
+				<a href="https://www.baradene.school.nz/">Baradene college school</a>
+			</p>
+				</div>
+			</footer>
+</body>
+</html>
