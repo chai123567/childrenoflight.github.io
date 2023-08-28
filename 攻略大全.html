@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Sky光遇</title>
+	<link rel="icon" type="image" href="favicon.ico">
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+<script type="text/javascript">
+function smartColumns() { 
+//Reset column size to a 100% once view port has been adjusted
+$("ul.column").css({ 'width' : "100%"});
+
+var colWrap = $("ul.column").width(); //Get the width of row
+var colNum = Math.floor(colWrap / 200); //Find how many columns of 200px can fit per row / then round it down to a whole number
+var colFixed = Math.floor(colWrap / colNum); //Get the width of the row and divide it by the number of columns it can fit / then round it down to a whole number. This value will be the exact width of the re-adjusted column
+
+$("ul.column").css({ 'width' : colWrap}); //Set exact width of row in pixels instead of using % - Prevents cross-browser bugs that appear in certain view port resolutions.
+$("ul.column li").css({ 'width' : colFixed}); //Set exact width of the re-adjusted column	
+
+}	
+
+smartColumns();
+
+$(window).resize(function () { //Each time the viewport is adjusted/resized, execute the function
+smartColumns();
+});
+</script> 
+	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<style>
+ /* 。 */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 楷体;
+	}
+
+/* render html5 elements as block */
+header, footer, section, aside, nav, article {
+	display: block;
+	}
+
+/* standard body */
+body {
+	margin: 0 auto;
+	width: 960px;
+	font: 14px/20px "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	/* background: #271408 url("bodybkg.gif") repeat; */
+	background: url("背景.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	}
+	
+/* standard alignments */
+.alignleft {
+	float: left;
+	}
+
+img.alignleft {
+	margin: 5px 10px 0 0; 
+	}
+
+.alignright {
+	float: right;
+	}
+
+img.alignright {
+	margin: 5px 0 0 10px; 
+	}
+	
+.center {
+	text-align: center;
+	}
+	
+.fleft {
+	text-align: left;
+	float: left;
+	margin-left: 20px;
+	}
+	
+.fright {
+	float: right;
+	text-align: right;
+	margin-right: 20px;
+	}
+	
+.fcentered {
+	text-align: center;
+	}
+
+/* Hx tags */
+
+h1 {
+	font-size: 48px;
+	padding: 20px 0;
+	text-shadow: 2px 2px 2px #000;
+	color: #d6a965;
+	}
+
+h2 {
+	font-size: 24px;
+	padding: 20px 0;
+	}
+
+h3 {
+	font-size: 18px;
+	padding: 10px 0;
+	}
+
+p {
+	padding-bottom: 20px;
+	}
+
+/* nav */
+
+nav {
+	position: absolute;
+	width: 960px;
+	background: url("navbg.png");
+	
+	/* curved border radius */
+	/* 设置元素的弯曲边框半径 */
+    border-radius: 10px;
+	}
+
+nav ul {
+	margin: 0 auto;
+	width: 960px;
+	list-style: none;
+	}
+
+nav ul li {
+	float: left;
+	}
+		
+nav ul li a {
+	display: block;
+	margin-right: 20px;
+	width: 140px;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 44px;
+	text-align: center;
+	text-decoration: none;
+	color: #f2ede7;
+	}
+			
+nav ul li a:hover {
+	color: #d6a965;
+	}
+			
+nav ul li.selected a {
+	color: #d6a965;
+	}
+			
+nav ul li.subscribe a {
+	margin-left: 20px;
+	padding-left: 33px;
+	text-align: left;
+	background: url("rss.png") left center no-repeat;
+	}
+
+
+
+/* intro */
+
+#intro {
+	position: relative;
+	margin-top: 55px;
+	padding: 50px;
+	background: #eabb4d;
+	border: #f2ede7 solid 15px;
+	/* background size */
+	background-size: 100%;
+	
+	
+	/* curved border radius */
+	border-radius: 10px;
+	border-radius: 10px;
+	}
+	
+#intro h2, #intro p {
+	position: relative;
+	z-index: 9999;
+	width: 350px;
+	}
+	
+#intro h2 {
+	padding: 0 0 20px 0;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	}
+	
+#intro p {
+	padding: 0;
+	color: #fff;
+	text-align: justify;
+	}
+	
+#intro img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 400px;
+	height: 100%;
+	
+	/* curved border radius */
+	border-radius: 10px;
+	border-radius: 10px;
+	}
+
+/* content and sidebar layout */
+
+#content {
+	position: relative;
+	margin-top: 50px;
+	float: left; 
+	width: 920px; 
+	margin:10px 5px 10px 0; 
+	padding:5px 20px 5px 20px;
+	background-color: #fff;
+	
+/* curved border radius */
+	border-radius: 10px;
+}
+
+/* columns */
+
+#content ul.column {
+	width: 100%;
+	padding: 0;
+	margin: 10px 0;
+	list-style: none;
+}
+
+#content ul.column li {
+	float: left;
+	width: 230px; /*Set default width*/
+	padding: 0;
+	margin: 5px 0;
+	display: inline;
+}
+
+#content .block {
+	height: 355px;
+	font-size: 1em;
+	margin-right: 10px; /*Creates the 10px gap between each column*/
+	padding: 20px;
+	background: #eabb4d;
+/* curved border radius */
+	border-radius: 10px;
+
+}
+
+#content .block a {
+	color: #FFF;
+	text-decoration: none;
+	}
+	
+#content .block img {
+  /*Flexible image size with border*/
+	width: 89%;  /*Took 1% off of the width to prevent IE6 bug*/
+	padding: 5%;
+	background:#fff;
+	margin: 0 auto;
+	display: block;
+	-ms-interpolation-mode: bicubic; /*prevents image pixelation IE 6/7 */
+	}
+/* end of column configuration */
+	
+/* footer */
+footer {
+	width: 960px;
+	clear: both;
+	color: #f2ede7;
+	overflow: hidden;
+	padding-top: 10px;
+	background-color: #271408;
+	/* curved border radius */
+	border-radius: 10px;
+	height: 220px;
+	margin-bottom: 10px;
+	}
+	
+footer section {
+width: 300px;
+float: left;
+padding: 0 10px;
+}
+
+footer section h2 {
+margin-top: 0;
+}
+
+footer section p {
+  font-size: 12px;
+	}
+
+footer section a {
+	color: #999;
+	}
+	
+footer section a:hover {
+	color: #FFF;
+	text-decoration: none;
+	}
+	
+/* for inner pages */
+
+/* content and sidebar layout */
+
+#innercontent {
+	float: left; 
+	width: 610px; 
+	margin:10px 5px 10px 0; 
+	padding:5px 20px 5px 20px;
+	background-color: #d6a965;
+	
+/* curved border radius */
+	/* 设置元素的弯曲边框半径 */
+    border-radius: 10px;
+}
+
+aside {
+	float: right;
+	text-align: left; 
+	width: 300px; 
+	margin:0; 
+	padding:0;
+	}
+
+/* article */
+.articlecontent header p, .blogPost header p a {
+	font-size: 14px;
+	font-style: italic;
+	color: #777;
+	}
+
+.articlecontent p a {
+	color: #695e53;
+	
+	}
+	
+.articlecontent p a:hover {
+	color: #fff;
+	}
+	
+.articlecontent header p a:hover {
+	text-decoration: none;
+	color: #000;
+	}
+	
+/* box shadow on pics */
+.articlecontent img {
+	box-shadow: 3px 3px 7px #777;
+	}
+
+/* sidebar */
+aside section {
+	margin: 10px 0 0 10px;
+	padding: 10px 15px;
+	background-color: #d6a965;
+/* curved border radius */
+	/* 设置元素的弯曲边框半径 */
+    border-radius: 10px;
+
+	}
+
+aside section ul {
+	margin: 0 0 0 20px;
+	color: #FFF;
+	}
+	
+aside section ul li a {
+	display: block;
+	text-decoration: none;
+	color: #695e53;
+	}
+		
+aside section ul li a:hover {
+	text-decoration: underline;
+	color: #fff;
+	}
+	#dddd {
+		text-align: center;
+		color: orange;
+		/* fon */
+		margin: 10px 0;
+	}
+	.wuwuwu {
+		text-align: justify;
+		font-size: 15px;
+		line-height: 30px;
+	}
+	#bugs {
+		margin: 30px;
+		margin-top: 0;
+	}
+</style>
+<body>
+
+	<header>
+		<h1>Sky 光遇</h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="关于项目.html">About website</a></li>
+			<li><a href="文创购买.html">Related product</a></li>
+			<li><a href="index.html">Home page</a></li>
+			<li><a href="index1.html">Beautiful scene</a></li>
+			<li class="selected"><a href="攻略大全.html">Game Guide</a></li>
+			<li><a href="联系我们.html">Contact Us (built)</a></li>
+		</ul>
+	</nav>
+	<section id="intro">
+		<header>
+			<h2>在天空王国挑战自我<br>Challenge yourself in the Sky</h2>
+		</header> 
+		<p>或许有一些小技巧帮助你更好的旅行，当然你也可以尝试高难度的飞行技术，开启你的挑战吧吧！<br>There may be some tips to help you travel better, of course, you can also try difficult flying techniques, start your challenge!</p>
+		<img src="game guide.jpeg" alt="lime" />
+	</section>
+	
+	<section id="content">
+				<ul class="column">
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href=""><img src="暴风眼.png" alt=""  /></a> 
+										<h2><a href="">暴风眼直飞<br>non-stop flight to  Eye of Eden</a></h2> 
+										<p>直冲云霄，破茧重生<br>Rise to the sky, emerge from the cocoon</p> 
+										<p><a href="https://b23.tv/K9A7oOZ">中文版视频</a></p>      <p><a href="https://youtu.be/Aw_g1lFX-bE?si=7C02f3O4QvTuk6tr">English video</a></p>
+										
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<img src="遁地.png" alt=""  /></a> 
+										<h2><a href="">遁地<br>Chibi fall</a></h2> 
+										<p>地图之外，探索未知<br>Beyond the map, explore the unknown
+										</p> 
+										<p><a href=" https://b23.tv/rdF1tIl">中文版视频</a></p>      <p><a href="https://youtu.be/fwIakfZrTPI?si=8Kr6IUZYUIe1Pkx4">English video</a></p>
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href=""><img src="水试炼.png" alt=""  /></a> 
+										<h2><a href="">水试炼<br>Trial of water</a></h2> 
+										<p>脚踏坚冰，跨越蔚水。<br>Stepping on solid ice, crossing azure waters.</p> 
+										<p><a href="https://b23.tv/QVXwX3E">中文版视频</a></p>      <p><a href="https://youtu.be/8Gr5k-iyxsQ?si=Jklqmih6DuJ1bB1K">English video</a></p>
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href=""><img src="火试炼.png" alt=""  /></a> 
+										<h2><a href="">火试炼<br>Trial of fire</a></h2> 
+										<p>规避黑暗中的危险，小心前进。<br>Avoid danger in the dark and proceed with caution.</p> 
+										<p><a href="https://b23.tv/S96aHfw">中文版视频</a></p>      <p><a href="https://youtu.be/lfTcD7I7HAc?si=2sTiRuQChci-LrAr">English</a></p>
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href=""><img src="土试炼.png" alt=""  /></a> 
+										<h2><a href="">土试炼<br> Trial of earth</a></h2> 
+										<p>迷宫之中，探明方向<br>In the maze, find the direction</p> 
+										<p><a href="https://b23.tv/PVLUA32">中文版视频</a></p>      <p><a href="https://youtu.be/sdEHxzGaxq4?si=97K0zYfqy6XQzBwb">English video</a></p>
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href=""><img src="风试炼.png" alt=""  /></a> 
+										<h2><a href="">风试炼<br>Trial of air</a></h2> 
+										<p>随风而行，步履薄冰<br>Walk with the wind, walk on thin ice</p> 
+										<p><a href="https://b23.tv/tgawzla">中文版视频</a></p>      <p><a href="https://youtu.be/bjZ8LGzEl3M?si=heKkJe8FnACtIzuh">English video</a></p>
+				        </section>
+				    </li>
+
+				    <!--eqblock-->
+				    <li>
+				        <section class="block">
+									<a href=""><img src="光翼位置.png" alt=""  /></a> 
+										<h2><a href="">光翼位置<br>Wing of light</a></h2> 
+										<p>收集光翼，翱翔天际<br>Gather wings of light and soar in the sky</p> 
+										<p><a href=" https://b23.tv/EpvSQtj">中文版视频</a></p>      <p><a href="https://youtu.be/Oyf2dRoTSFY?si=BTtkT4oGJx1xN7lA">English video</a></p>
+				        </section>
+				    </li>
+					<li>
+				        <section class="block">
+									<a href=""><img src="旅行先祖位置.png" alt=""  /></a> 
+										<h2><a href="">旅行先祖位置<br>Travelling spirit</a></h2> 
+										<p>寻找先祖，重拾光明<br>Find the spirits, find the light again</p> 
+										<p><a href=" https://b23.tv/9Pm5QJP">中文版视频</a></p>      <p><a href="https://youtu.be/SNqogI1_Y30?si=ZwXrUVRRZDINhWjb">English video</a></p>
+				        </section>
+				    </li>
+
+					<li>
+				        <section class="block">
+									<a href=""><img src="收集烛火.png" alt=""  /></a> 
+										<h2><a href="">收集烛火<br>Candles run</a></h2> 
+										<p>星星烛火，点亮天空<br>Stars candle fire, light up the sky</p> 
+										<p><a href=" https://b23.tv/9Dz4AHE">中文版视频</a></p>      <p><a href="https://youtu.be/UGmOT-6P2aM?si=fktmRTIL_Hf48dQm">English video</a></p>
+				        
+				    </li>
+				    
+					<li>
+				        <section class="block">
+									<a href=""><img src="训龙.png" alt=""  /></a> 
+										<h2><a href="">训龙<br>Training black dragon</a></h2> 
+										<p>盘旋直上，惊心动魄<br>It spirals up. It's thrilling</p> 
+										<p><a href=" https://b23.tv/l9lFfSa">中文版视频</a></p>      <p><a href="https://youtu.be/nMxqD0xV3Tg?si=NmnbRaPOPULIi5LE">English video</a></p>
+				        </section>
+				    </li>
+				
+				
+				
+				
+				
+				
+				
+				</ul>
+		</section>
+		
+	
+		<footer id="ddddd">
+			<!-- <section> -->
+				<div id="bugs">
+			<h3 id="dddd">本网站由柴制作</h3>
+			<h4 id="dddd">This website is made by Chai</h4>
+			<p class="wuwuwu">本网站制作者目前就读于新西兰奥克兰Baradene colledge school，欢迎您访问了解我们的学校<br>The creator of this website is currently studying at Baradene colledge school in Auckland, New Zealand. You are welcome to visit and learn more about our school<br>
+				<a href="https://www.baradene.school.nz/">Baradene colledege school</a>
+			</p>
+				</div>
+			</footer>
+</body>
+</html>

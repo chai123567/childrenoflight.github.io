@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Sky光遇</title>
+	<link rel="icon" type="image" href="favicon.ico">
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+<script type="text/javascript" >
+function smartColumns() { //Create a function that calculates the smart columns
+
+//Reset column size to a 100% once view port has been adjusted
+$("ul.column").css({ 'width' : "100%"});
+
+var colWrap = $("ul.column").width(); //Get the width of row
+var colNum = Math.floor(colWrap / 200); //Find how many columns of 200px can fit per row / then round it down to a whole number
+var colFixed = Math.floor(colWrap / colNum); //Get the width of the row and divide it by the number of columns it can fit / then round it down to a whole number. This value will be the exact width of the re-adjusted column
+
+$("ul.column").css({ 'width' : colWrap}); //Set exact width of row in pixels instead of using % - Prevents cross-browser bugs that appear in certain view port resolutions.
+$("ul.column li").css({ 'width' : colFixed}); //Set exact width of the re-adjusted column	
+
+}	
+
+smartColumns();
+
+$(window).resize(function () { //Each time the viewport is adjusted/resized, execute the function
+smartColumns();
+});
+</script> 
+	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<style>
+	
+
+/* reset */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 楷体;
+	}
+
+/* render html5 elements as block */
+header, footer, section, aside, nav, article {
+	display: block;
+	}
+
+/* standard body */
+body {
+	margin: 0 auto;
+	width: 960px;
+	font: 14px/20px "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	/* background: #271408 url("bodybkg.gif") repeat; */
+	background: url("背景.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	}
+	
+/* standard alignments */
+.alignleft {
+	float: left;
+	}
+
+img.alignleft {
+	margin: 5px 10px 0 0; 
+	}
+
+.alignright {
+	float: right;
+	}
+
+img.alignright {
+	margin: 5px 0 0 10px; 
+	}
+	
+.center {
+	text-align: center;
+	}
+	
+.fleft {
+	text-align: left;
+	float: left;
+	margin-left: 20px;
+	}
+	
+.fright {
+	float: right;
+	text-align: right;
+	margin-right: 20px;
+	}
+	
+.fcentered {
+	text-align: center;
+	}
+
+/* Hx tags */
+
+h1 {
+	font-size: 48px;
+	padding: 20px 0;
+	text-shadow: 2px 2px 2px #000;
+	color: #d6a965;
+	}
+
+h2 {
+	font-size: 24px;
+	padding: 20px 0;
+	}
+
+h3 {
+	font-size: 18px;
+	padding: 10px 0;
+	}
+
+p {
+	padding-bottom: 20px;
+	}
+
+/* nav */
+
+nav {
+	position: absolute;
+	width: 960px;
+	background: url("navbg.png");
+	
+	/* curved border radius */
+	border-radius: 10px;
+	border-radius: 10px;
+	}
+
+nav ul {
+	margin: 0 auto;
+	width: 960px;
+	list-style: none;
+	}
+
+nav ul li {
+	float: left;
+	}
+		
+nav ul li a {
+	display: block;
+	margin-right: 20px;
+	width: 140px;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 44px;
+	text-align: center;
+	text-decoration: none;
+	color: #f2ede7;
+	}
+			
+nav ul li a:hover {
+	color: #d6a965;
+	}
+			
+nav ul li.selected a {
+	color: #d6a965;
+	}
+			
+nav ul li.subscribe a {
+	margin-left: 20px;
+	padding-left: 33px;
+	text-align: left;
+	background: url("rss.png") left center no-repeat;
+	}
+
+
+
+/* intro */
+
+#intro {
+	position: relative;
+	margin-top: 55px;
+	padding: 50px;
+	background-color: #eabb4d;
+	
+	/* background size */
+	
+	background-size: 100%;
+
+	
+	/* curved border radius */
+	border-radius: 10px;
+	border-radius: 10px;
+	border: #f2ede7 solid 15px;
+	}
+	
+#intro h2, #intro p {
+	position: relative;
+	z-index: 9999;
+	width: 350px;
+	}
+	
+#intro h2 {
+	padding: 0 0 20px 0;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	}
+	
+#intro p {
+	padding: 0;
+	color: #fff;
+	text-align: justify;
+	}
+	
+#intro img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 400px;
+	height: 100%;
+	
+	/* curved border radius */
+	
+	border-radius: 10px;
+	}
+
+/* content and sidebar layout */
+
+#content {
+	position: relative;
+	margin-top: 50px;
+	float: left; 
+	width: 920px; 
+	margin:10px 5px 10px 0; 
+	padding:5px 20px 5px 20px;
+	background-color: #eabb4d;
+	
+/* curved border radius */
+	
+	border-radius: 10px;
+}
+
+/* columns */
+
+#content ul.column {
+	width: 100%;
+	padding: 0;
+	margin: 10px 0;
+	list-style: none;
+}
+
+#content ul.column li {
+	float: left;
+	width: 230px; /*Set default width*/
+	padding: 0;
+	margin: 5px 0;
+	display: inline;
+}
+
+#content .block {
+	height: 355px;    
+	font-size: 1em;
+	margin-right: 10px; /*Creates the 10px gap between each column*/
+	padding: 20px;
+	background: #eabb4d;
+/* curved border radius */
+	
+	border-radius: 10px;
+}
+
+#content .block a {
+	color: #FFF;
+	}
+	
+#content .block img {
+  /*Flexible image size with border*/
+	width: 89%;  /*Took 1% off of the width to prevent IE6 bug*/
+	padding: 5%;
+	background:#fff;
+	margin: 0 auto;
+	display: block;
+	-ms-interpolation-mode: bicubic; /*prevents image pixelation IE 6/7 */
+	}
+/* end of column configuration */
+	
+/* footer */
+footer {
+	width: 960px;
+	clear: both;
+	color: #f2ede7;
+	overflow: hidden;
+	padding-top: 10px;
+	background-color: #271408;
+	/* curved border radius */
+	
+	border-radius: 10px;
+	height: 220px;
+	margin-bottom: 10px;
+	}
+	
+footer section {
+width: 300px;
+float: left;
+padding: 0 10px;
+}
+
+footer section h2 {
+margin-top: 0;
+}
+
+footer section p {
+  font-size: 12px;
+	}
+
+footer section a {
+	color: #999;
+	}
+	
+footer section a:hover {
+	color: #FFF;
+	text-decoration: none;
+	}
+	
+/* for inner pages */
+
+/* content and sidebar layout */
+
+#innercontent {
+	float: left; 
+	width: 610px; 
+	margin:10px 5px 10px 0; 
+	padding:5px 20px 5px 20px;
+	background-color: #eabb4d;
+	
+/* curved border radius */
+	
+	border-radius: 10px;
+}
+
+aside {
+	float: right;
+	text-align: left; 
+	width: 300px; 
+	margin:0; 
+	padding:0;
+	}
+
+/* article */
+.articlecontent header p, .blogPost header p a {
+	font-size: 14px;
+	font-style: italic;
+	color: #777;
+	}
+
+.articlecontent p a {
+	color: #695e53;
+	}
+	
+.articlecontent p a:hover {
+	color: #fff;
+	}
+	
+.articlecontent header p a:hover {
+	text-decoration: none;
+	color: #000;
+	}
+	
+/* box shadow on pics */
+.articlecontent img {
+	box-shadow: 3px 3px 7px #777;
+	}
+
+/* sidebar */
+aside section {
+	margin: 10px 0 0 10px;
+	padding: 10px 15px;
+	background-color: #eabb4d;
+	
+/* curved border radius */
+	
+	border-radius: 10px;
+	}
+
+aside section ul {
+	margin: 0 0 0 20px;
+	color: #FFF;
+	}
+	
+aside section ul li a {
+	display: block;
+	text-decoration: none;
+	color: #695e53;
+	}
+		
+aside section ul li a:hover {
+	text-decoration: underline;
+	color: #fff;
+	}
+	#dddd {
+		text-align: center;
+		color: orange;
+		/* fon */
+		margin: 10px 0;
+	}
+	.wuwuwu {
+		text-align: justify;
+		font-size: 15px;
+		line-height: 30px;
+	}
+	#bugs {
+		margin: 30px;
+		margin-top: 0;
+	}
+</style>
+<body>
+
+	<header>
+		<meta charset="utf-8"/>
+		<h1>Sky 光遇</h1>
+	</header>
+	<nav>
+		<ul>
+			<li class="selected"><a href="#">About website</a></li>
+			<li><a href="文创购买.html">Related product</a></li>
+			<li><a href="index.html">Home page</a></li>
+			<li><a href="index1.html">Beautiful scene</a></li>
+			<li><a href="攻略大全.html">Game Guide</a></li>
+			<li><a href="联系我们.html">Contact Us (built)</a></li>
+		</ul>
+	</nav>
+	<section id="intro">
+		<header>
+			<h2>光遇攻略集合<br>Sky Recipes collection</h2>
+		</header>
+		<p>光遇是一款宁静温暖的MMORPG，在云端翱翔或是演奏乐器，又或者只是放松一下，享受周围的美景。<br>Sky is a serene and warm MMORPG. Soar in the clouds, play an instrument, or just relax and enjoy the scenery around you.</p>
+		<img src="关于项目.jpg" alt="lime" />
+	</section>
+	
+	<div id="innercontent">
+				<article class="articlecontent">
+					<header>
+						<h2>网站制作初心<br>The original intention of website production</h2>
+					</header>
+						<p>创建这个网站的初心，源于我对光遇这款游戏的热爱与热情。我希望通过这个网站为所有玩家提供有用的资源，帮助他们更好地徜徉在光之国中，我相信每个玩家在游戏中都有独特的体验和发现，让我们共同探索光遇的奇妙世界，一起用心追寻光明与温暖。</p>
+					
+						<p>The original intention of creating this website stems from my love and enthusiasm for the game Sky. Through this website, I hope to provide all players with useful resources to help them better wander in the Land of Light. I believe that every player has a unique experience and discovery in the game, so that we can explore the wonderful world of Sky together and pursue light and warmth with our hearts.</p>
+
+				</article>
+
+				<article class="articlecontent">
+					<header>
+						<h2>网站提供内容<br>The content provided by the website</h2>
+					</header>
+					<p>官方周边购买，非官方景点和不常见的小技巧。<br>Official peripheral purchases, unofficial attractions and uncommon tips.</p>
+					<p>共同感受这种充满希望和温暖的旅程，无需消耗言语，通过可爱的动作，你将与其他玩家建立属于真挚的情感纽带，创造自己的故事。<br>Experience this hopeful and warm journey together, without consuming words, through lovely actions, you will build a genuine emotional bond with other players and create your own story.
+					</p>
+				</article>
+
+		</div>
+		
+		<aside>
+			<section>
+				<header>
+					<h3>目录 Catalogue</h3>
+				</header>
+				<ul>
+					<li><a href="#">项目背景</a></li>
+					<li><a href="#">项目目的</a></li>
+					<li><a href="#">项目制作者</a></li>
+					<li><a href="#">其他</a></li>
+				</ul>
+			</section>
+			
+			<section>
+				<header>
+					<h3>赞助者 Sponsor</h3>
+					<p>Katrina Wang				
+					</p>
+					<p>Chenyue Zhang</p>
+
+				</header>
+					
+					
+					
+					
+			</section>
+			
+			<section>
+				<header>
+					<h3>联系我们 Contect us</h3>
+				</header>
+				<ul>
+					<li><a href="#">QQ</a></li>
+					<li><a href="#">Wechat</a></li>
+					<li><a href="#">GitHub</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<header>
+					<h3>近期动态 Recent trends
+					</h3>
+				</header>
+					<ul>
+						<li><a href="#">欧若拉演唱会！<br>Aurora concert！</a></li>
+						
+					</ul>
+			</section>
+			
+		</aside>
+
+		<footer id="ddddd">
+			<!-- <section> -->
+				<div id="bugs">
+			<h3 id="dddd">本网站由柴制作</h3>
+			<h4 id="dddd">This website is made by Chai</h4>
+			<p class="wuwuwu">本网站制作者目前就读于新西兰奥克兰Baradene college school，欢迎您访问了解我们的学校<br>The creator of this website is currently studying at Baradene college school in Auckland, New Zealand. You are welcome to visit and learn more about our school<br>
+				<a href="https://www.baradene.school.nz/">Baradene college school</a>
+			</p>
+				</div>
+			</footer>
+
+</body>
+</html>

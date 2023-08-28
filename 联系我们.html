@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<head>
+	<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Sky光遇</title>
+	<link rel="icon" type="image" href="favicon.ico">
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+<script type="text/javascript">
+function smartColumns() { 
+//Reset column size to a 100% once view port has been adjusted
+$("ul.column").css({ 'width' : "100%"});
+
+var colWrap = $("ul.column").width(); //Get the width of row
+var colNum = Math.floor(colWrap / 200); //Find how many columns of 200px can fit per row / then round it down to a whole number
+var colFixed = Math.floor(colWrap / colNum); //Get the width of the row and divide it by the number of columns it can fit / then round it down to a whole number. This value will be the exact width of the re-adjusted column
+
+$("ul.column").css({ 'width' : colWrap}); //Set exact width of row in pixels instead of using % - Prevents cross-browser bugs that appear in certain view port resolutions.
+$("ul.column li").css({ 'width' : colFixed}); //Set exact width of the re-adjusted column	
+
+}	
+
+smartColumns();
+
+$(window).resize(function () { //Each time the viewport is adjusted/resized, execute the function
+smartColumns();
+});
+</script> 
+	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+	<!-- 其他的 meta 标签和 CSS 链接 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ </head>
+  
+<head>
+	<style>
+		* {
+	margin: 100;
+	padding: 0;
+	font-family: 楷体;
+	}
+
+/* render html5 elements as block */
+header, footer, section, aside, nav, article {
+	display: block;
+	}
+	  body {
+		background-image: url('新的背景.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+	  }
+
+/* standard alignments */
+.alignleft {
+	float: left;
+	}
+
+img.alignleft {
+	margin: 5px 10px 0 0; 
+	}
+
+.alignright {
+	float: right;
+	}
+
+img.alignright {
+	margin: 5px 0 0 10px; 
+	}
+	
+.center {
+	text-align: center;
+	}
+	
+.fleft {
+	text-align: left;
+	float: left;
+	margin-left: 20px;
+	}
+	
+.fright {
+	float: right;
+	text-align: right;
+	margin-right: 20px;
+	}
+	
+.fcentered {
+	text-align: center;
+	}
+
+/* Hx tags */
+
+h1 {
+	font-size: 48px;
+	padding: 20px 0;
+	text-shadow: 2px 2px 2px #000;
+	color: #d6a965;
+	}
+
+h2 {
+	font-size: 24px;
+	padding: 20px 0;
+	}
+
+h3 {
+	font-size: 18px;
+	padding: 10px 0;
+	}
+
+p {
+	padding-bottom: 20px;
+	}
+
+/* nav */
+
+nav {
+	position: absolute;
+	width: 960px;
+	background: url("navbg.png");
+	
+	/* curved border radius */
+	border-radius: 10px;
+	border-radius: 10px;
+	}
+
+nav ul {
+	margin: 0 auto;
+	width: 960px;
+	list-style: none;
+	}
+
+nav ul li {
+	float: left;
+	}
+		
+nav ul li a {
+	display: block;
+	margin-right: 20px;
+	width: 140px;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 44px;
+	text-align: center;
+	text-decoration: none;
+	color: #f2ede7;
+	}
+			
+nav ul li a:hover {
+	color: #d6a965;
+	}
+			
+nav ul li.selected a {
+	color: #d6a965;
+	}
+			
+nav ul li.subscribe a {
+	margin-left: 20px;
+	padding-left: 33px;
+	text-align: left;
+	background: url("rss.png") left center no-repeat;
+	}
+
+	#innercontent {
+	float: left; 
+	width: 610px; 
+	margin:10px 5px 10px 0; 
+	padding:5px 20px 5px 20px;
+	background-color: #eabb4d;
+	
+/* curved border radius */
+	
+	border-radius: 10px;
+}
+
+aside {
+	float: right;
+	text-align: left; 
+	width: 300px; 
+	margin:0; 
+	padding:0;
+	}
+
+
+
+	</style>
+  </head>
+
+  
+
+		<!--Container-->
+		<section id="container">
+			<div class="wrap-container">
+				<div class="zerogrid">
+					<div class="row">
+						<h1 class="color-red" style="margin: 20px 0">Contact us</h1>
+						
+						<div class="col-full">
+							
+							<video width="380" height="240" autoplay muted loop>
+								<source src="movie.mp4" type="video/mp4">							
+							  Your browser does not support the video tag.
+							  </video>
+							
+						</div>
+						<div class="col-1-3">
+							<div class="wrap-col">
+								<h3 class="color-green" style="margin: 20px 0">  Contact Info  联系信息</h3>
+								
+								   <p>本网站制作者目前就读于新西兰奥克兰Baradene college school<br>The creator of this website is currently studying at Baradene college school.
+									</p>
+								
+							</div>
+						</div>
+						<div class="col-2-3">
+							<div class="wrap-col">
+								<div class="contact">
+									<h3 class="color-green" style="margin: 20px 0 20px 30px">Contact Form  联系表单</h3>
+									<div id="contact_form">
+										<form name="form1" id="ff" method="post" action="contact.php">
+											<label class="row">
+												<div class="col-1-2">
+													<div class="wrap-col">
+														<input type="text" name="name" id="name" placeholder="Enter name" required="required" />
+													</div>
+												</div>
+												<div class="col-1-2">
+													<div class="wrap-col">
+														<input type="email" name="email" id="email" placeholder="Enter email" required="required" />
+													</div>
+												</div>
+											</label>
+											<label class="row">
+												<div class="col-2-4">
+													<div class="wrap-col">
+													<input type="text" name="subject" id="subject" placeholder="Subject" required="required" />
+													</div>
+												</div>
+												<div class="col-1-4">
+													<div class="wrap-col">
+													<input type="date"  name="date" id="date" placeholder="Date"/>
+													</div>
+												</div>
+												<div class="col-1-4">
+													<div class="wrap-col">
+													<input type="time"  name="time" id="time" placeholder="Time"/>
+													</div>
+												</div>											
+											</label>
+											<label class="row">
+												<div class="wrap-col">
+													<textarea name="message" id="message" class="form-control" rows="4" cols="25" required
+													placeholder="Message"></textarea>
+												</div>
+											</label>
+											<center><input class="sendButton" type="submit" name="Submit" value="Submit"></center>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</section>
+		<hr class="line">
+		<!--/Footer-->
+		<footer>
+			<div class="wrap-footer">
+				<div class="zerogrid">
+					<div class="row">
+						<div class="col-1-3">
+							<div class="wrap-col">
+								<p>This website was written by Jennifer Chai</p>
+							</div>
+						</div>
+						<div class="col-1-3">
+							<div class="wrap-col">
+								<ul class="social-buttons">
+									<li><a href="https://instagram.com/xiaoyang9982?igshid=OGQ5ZDc2ODk2ZA==">Instagram<i class="fa fa-instagram"></i></a></li>
+									<li><a href="#">Facebook<i class="fa fa-facebook"></i></a></li>					
+									<li><a href="https://www.youtube.com/channel/UCzxBr_K18qQYYUSPFvQnh0w">Youtube<i class="fa fa-youtube"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-1-3">
+							<div class="wrap-col">
+								<ul class="quick-link">
+									<li><a href="攻略大全.html">Back to the Game Guide</a></li>
+									<li><a href="index.html">Back to the homepage</a></li>
+									<li><a href="文创购买.html">Back to the Related product</a></li>
+									<li><a href="index1.html">Back to the Beautiful scene</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p>很高兴认识你！<br>Nice to meet you！</p>
+		</footer>
+
+</div>
+
+
+     
+
+
+</body>
+</html>
+<head>
+	
